@@ -30,8 +30,11 @@ class AdminPostsController extends Controller
 
         return view('admin.posts.edit', $data);
     }
-    public function store()
+    public function store(PostRequest $request)
     {
+        Post::create($request->all());
+        //設定頁面跳轉
+        return redirect()->route('admin.posts.index');
     }
 
 }
