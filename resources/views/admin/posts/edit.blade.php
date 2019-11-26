@@ -30,23 +30,32 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form role="form">
+        <!--<form role="form">-->
+        <form action="/admin/posts/{{$post->id}}" method="POST" role="form">
+        {{ csrf_field() }}
+        <!--輔助函數，並告知server 端表單 request method 為 PATCH -->
+            {{ method_field('PATCH') }}
 
             <div class="form-group">
                 <label>標題：</label>
-                <input class="form-control" placeholder="請輸入文章標題">
+                <!--<input class="form-control" placeholder="請輸入文章標題">-->
+                <input name="title" class="form-control" placeholder="請輸入文章標題" value="{{$post->title}}">
             </div>
 
             <div class="form-group">
                 <label>內容：</label>
-                <textarea class="form-control" rows="10"></textarea>
+                <!--<textarea class="form-control" rows="10"></textarea>-->
+                <textarea name="content" class="form-control" rows="10">{{$post->content}}</textarea>
             </div>
 
             <div class="form-group">
                 <label>精選？</label>
-                <select class="form-control">
-                    <option value="0">否</option>
-                    <option value="1">是</option>
+                <!--<select class="form-control">-->
+                <select name="is_feature" class="form-control" >
+                    <!--<option value="0">否</option>-->
+                    <option value="0" {{ $post->is_feature?'':'SELECTED' }}>否</option>
+                    <!--<option value="1">是</option>-->
+                    <option value="1" {{ $post->is_feature?'SELECTED':'' }}>是</option>
                 </select>
             </div>
 
