@@ -25,5 +25,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('posts'         ,['as'=>'admin.posts.store','uses'=> 'AdminPostsController@store']);
     //設定更新所需的Route
     Route::patch('posts/{id}'   , ['as' => 'admin.posts.update', 'uses' => 'AdminPostsController@update']);
+    //設定刪除所需的Route
+    Route::delete('posts/{id}'  , ['as' => 'admin.posts.destroy','uses' => 'AdminPostsController@destroy']);
 
 });
