@@ -48,7 +48,7 @@
                             /
                             <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
                                 {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
+                                {{ method_field('DELETE')  }}
                                 <button type="submit" class="btn btn-success">刪除</button>
                             </form>
                         </td>
