@@ -38,15 +38,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach(range(1, 20) as $id)
+                @foreach($posts as $post)
                     <tr>
-                        <td style="text-align: center">{{ $id }}</td>
-                        <td>文章標題</td>
-                        <td style="text-align: center">V</td>
+                        <td>{{$post->id}}</td>
+                        <td>{{$post->title}}</td>
+                        <td>{{($post->is_feature)?'v':'x'}}</td>
                         <td>
-                            <a href="{{ route('admin.posts.edit', $id) }}">編輯</a>
+                            <a href="{{route('admin.posts.edit',$post->id)}}">編輯</a>
                             /
-                            <a href="#">刪除</a>
+                            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-success">刪除</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
