@@ -12,7 +12,7 @@ class AdminPostsController extends Controller
     public function index()
     {
         //return view('admin.posts.index');
-        
+
         //使用 Model 查詢資料
         $post=Post::orderBy('created_at', 'DESC')->get();
         $data=['posts'=>$post];
@@ -30,4 +30,8 @@ class AdminPostsController extends Controller
 
         return view('admin.posts.edit', $data);
     }
+    public function store()
+    {
+    }
+
 }
