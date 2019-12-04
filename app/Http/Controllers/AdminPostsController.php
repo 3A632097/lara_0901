@@ -39,7 +39,7 @@ class AdminPostsController extends Controller
         return redirect()->route('admin.posts.index');
     }
     //在 PostsController的 update內更新資料
-    public function update(PostRequest $request,$id)
+    public function update(Request $request,$id)
     {
         $post = Post::find($id);
         $post->update($request->all());
