@@ -32,10 +32,10 @@ class AdminPostsController extends Controller
         $data = ['post' => $post];
         return view('admin.posts.edit', $data);
     }
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
         Post::create($request->all());
-        //設定頁面跳轉
+        //設定跳轉頁面
         return redirect()->route('admin.posts.index');
     }
     //在 PostsController的 update內更新資料
