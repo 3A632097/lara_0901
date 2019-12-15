@@ -45,8 +45,11 @@ class AdminPostsController extends Controller
     //0901(2-3)編輯 PostsController裡設定 type-­hinting
     public function store(PostRequest $request)
     {
-    //
+        Post::create($request->all());
+        //設定頁面跳轉
+        return redirect()->route('admin.posts.index');
     }
+
 
     //0901(1)
     //在 PostsController的 update內更新資料
@@ -58,9 +61,11 @@ class AdminPostsController extends Controller
 //    }
 
     //0901(2-3)編輯 PostsController裡設定 type-­hinting
-    public function update(PostRequest $request)
+    public function update(PostRequest $request,$id)
     {
-        //
+        $post = Post::find($id);
+        $post->update($request->all());
+        return redirect()->route('admin.posts.index');
     }
 
     //在 PostsController的 destroy內刪除資料
