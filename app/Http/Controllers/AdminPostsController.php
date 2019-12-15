@@ -32,19 +32,36 @@ class AdminPostsController extends Controller
         $data = ['post' => $post];
         return view('admin.posts.edit', $data);
     }
-    public function store(Request $request)
+
+    //0901(1)
+//    public function store(Request $request)
+//    {
+//        Post::create($request->all());
+//        //設定跳轉頁面
+//        return redirect()->route('admin.posts.index');
+//    }
+
+    //0901(2-3)編輯 PostsController裡設定 type-­hinting
+    public function store(PostRequest $request)
     {
-        Post::create($request->all());
-        //設定跳轉頁面
-        return redirect()->route('admin.posts.index');
+    //
     }
+
+    //0901(1)
     //在 PostsController的 update內更新資料
-    public function update(Request $request,$id)
+//    public function update(Request $request,$id)
+//    {
+//        $post = Post::find($id);
+//        $post->update($request->all());
+//        return redirect()->route('admin.posts.index');
+//    }
+
+    //0901(2-3)編輯 PostsController裡設定 type-­hinting
+    public function update(PostRequest $request)
     {
-        $post = Post::find($id);
-        $post->update($request->all());
-        return redirect()->route('admin.posts.index');
+        //
     }
+
     //在 PostsController的 destroy內刪除資料
     public function destroy($id)
     {
